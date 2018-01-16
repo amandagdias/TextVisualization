@@ -1,0 +1,2 @@
+Para rodar este projeto, basta inicializar um servidor local para que seja possível a leitura dos arquivos e abrir o arquivo index.html. 
+Os arquivos svm.fil, Exemplo.R e Terms não serão necessários para rodar o projeto, apenas foram utilizados para o pré-processamento dos dados.
