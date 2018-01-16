@@ -43,7 +43,6 @@ var tooltip = d3.select("body").append("div")
 // load data
 d3.csv("files/scatterplot500color.csv", function(error, data) {
 
-
   data.forEach(function(d) {
     d["V1"] = +d["V1"];
     d["V2"] = +d["V2"];     
@@ -168,5 +167,8 @@ linearGradient.append("stop")
       .attr("dy", ".35em")
       .style("text-anchor", "end")
       .text("Query") 
-  
+    
+   
+  //Add Barchart for the first Element 
+  AddBarchart(1); 
 });

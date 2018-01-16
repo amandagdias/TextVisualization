@@ -1,12 +1,15 @@
 var formatPercent = d3.format(".0%");
 var size = 0;
 var indexes = [];
+
+
 function AddBarchart(documentName){    
-    documentName = "V"+documentName;  
-    var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 550 - margin.left - margin.right,
-    height = 200 - margin.top - margin.bottom;   
-var xValue2 = function(d) { if (d[documentName]!=0) return d["indexes"];}; // data -> value   
+    documentLabel = "Document Name: " + documentName;
+    documentName = "V"+documentName;       
+   var margin = {top: 20, right: 20, bottom: 30, left: 40},
+width = 550 - margin.left - margin.right,
+height = 200 - margin.top - margin.bottom; 
+var xDomain = function(d) { if (d[documentName]!=0) return d["indexes"];}; // data -> value   
 var xValue = function(d) {return d["indexes"];},//{ if (d["V1"]!=0) return d["indexes"];}, // data -> value    
     xScale = d3.scale.ordinal().rangeBands([0, width], .1), // value -> display
     xMap = function(d) { return xScale(xValue(d)); }, // data -> display
@@ -36,7 +39,7 @@ var barchart = d3.select("#barchart").append("svg")
 
 barchart.call(tip); 
 d3.csv("files/barchart500.csv", type, function(error, data) {
-  xScale.domain(data.map(xValue2));
+  xScale.domain(data.map(xDomain));
   yScale.domain([d3.min(data, yValue), d3.max(data, yValue)]);
 
   barchart.append("g")
@@ -53,7 +56,7 @@ d3.csv("files/barchart500.csv", type, function(error, data) {
       .attr("dy", ".71em")
       .style("text-anchor", "end");
   barchart.append("text")
-      .text(documentName)
+      .text(documentLabel)
       .attr("dx", ".71em")
   barchart.append("rect")
       .attr("width", 5)
