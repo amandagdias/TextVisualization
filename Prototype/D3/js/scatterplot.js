@@ -102,7 +102,7 @@ d3.csv("files/scatterplot500color.csv", function(error, data) {
       })
       .on("click", function(d){
           console.log(+d["names"]);
-          AddBarchart(+d["names"]);
+          AddBarchart(+d["names"], false);
           
       });
   svg.selectAll(".first")
@@ -170,5 +170,5 @@ linearGradient.append("stop")
     
    
   //Add Barchart for the first Element 
-  AddBarchart(1); 
+  AddBarchart(1, true); 
 });
